@@ -1,12 +1,20 @@
-# React Native Lab Exam — Quick Reference
+# React Native FlexNav Kit
+
+A personal practice project for learning core React Native patterns:
+Flexbox layout, styling approaches (StyleSheet vs styled-components), and
+React Navigation (stack, tab, and drawer navigators, including nesting them
+together).
+
+I built this to work through each pattern hands-on and have working examples
+I can refer back to.
 
 ## 1. Setup (fresh Expo project)
 ```bash
-npx create-expo-app exam-app
-cd exam-app
+npx create-expo-app my-app
+cd my-app
 ```
 
-## 2. Install ALL dependencies at once
+## 2. Install dependencies
 ```bash
 npx expo install react-native-safe-area-context react-native-screens
 npx expo install react-native-gesture-handler react-native-reanimated
@@ -39,11 +47,11 @@ screens/
 ```bash
 npx expo start
 ```
-Press `w` for web (fastest to preview during exam), or scan the QR with Expo Go.
+Press `w` for web, or scan the QR with Expo Go.
 
 ---
 
-## Fast Troubleshooting (things that WILL go wrong under exam pressure)
+## Troubleshooting notes (things I ran into while building this)
 
 | Symptom | Fix |
 |---|---|
@@ -56,7 +64,7 @@ Press `w` for web (fastest to preview during exam), or scan the QR with Expo Go.
 | Tab icons not showing | Confirm `@expo/vector-icons` installed; icon name must be a valid Ionicons name (check exact spelling with `-outline` suffix) |
 | Params undefined on Details screen | Use `route.params?.xxx` (optional chaining) — params are undefined on first mount before navigation |
 
-## Core Concepts — 30 second recall
+## Notes to self on the core concepts
 
 **Flexbox**
 - Main axis = `justifyContent`, Cross axis = `alignItems`
@@ -67,7 +75,7 @@ Press `w` for web (fastest to preview during exam), or scan the QR with Expo Go.
 - `StyleSheet.create()`: plain objects, `style={[a, b]}` array syntax for conditionals
 - `styled-components`: template literals, props drive dynamic values directly: `${props => ...}`
 
-**Navigation nesting order (most tested pattern)**
+**Navigation nesting order**
 ```
 NavigationContainer
   └── Drawer.Navigator
