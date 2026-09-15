@@ -1,9 +1,8 @@
 # React Native FlexNav Kit
 
 A personal practice project for learning core React Native patterns:
-Flexbox layout, styling approaches (StyleSheet vs styled-components), and
-React Navigation (stack, tab, and drawer navigators, including nesting them
-together).
+Flexbox layout, StyleSheet.create() styling, and React Navigation (stack,
+tab, and drawer navigators, including nesting them together).
 
 I built this to work through each pattern hands-on and have working examples
 I can refer back to.
@@ -19,7 +18,6 @@ cd my-app
 npx expo install react-native-safe-area-context react-native-screens
 npx expo install react-native-gesture-handler react-native-reanimated
 npm install @react-navigation/native @react-navigation/native-stack @react-navigation/bottom-tabs @react-navigation/drawer
-npm install styled-components
 npx expo install @expo/vector-icons
 ```
 > Use `npx expo install` (not plain `npm install`) for native modules — it picks the version matched to your Expo SDK. Plain `npm install` is fine for JS-only packages like `styled-components` and `@react-navigation/*`.
@@ -40,7 +38,7 @@ screens/
   SettingsScreen.js
   ProfileScreen.js
   FlexboxPlayground.js
-  StylesComparison.js
+  StylesDemo.js
 ```
 
 ## 4. Run
@@ -58,7 +56,6 @@ Press `w` for web, or scan the QR with Expo Go.
 | `Unable to resolve "react-native-gesture-handler"` | Run the expo install command above; restart with `npx expo start -c` (clears cache) |
 | Drawer/gestures not responding | `import 'react-native-gesture-handler'` must be the **first line** of `App.js` |
 | Reanimated crash on start | `react-native-reanimated/plugin` must be in `babel.config.js`, **listed last**, then restart with `-c` flag |
-| styled-components styles not applying | Import from `'styled-components/native'`, NOT `'styled-components'` |
 | Blank screen, no error | Check `NavigationContainer` wraps everything ONCE at the root only (never nest two `NavigationContainer`s) |
 | `Cannot read property 'navigate' of undefined` | Component isn't being rendered as a `Screen` inside a Navigator — it lost the `navigation` prop |
 | Tab icons not showing | Confirm `@expo/vector-icons` installed; icon name must be a valid Ionicons name (check exact spelling with `-outline` suffix) |
@@ -71,9 +68,11 @@ Press `w` for web, or scan the QR with Expo Go.
 - Default `flexDirection` in RN is `column` (different from CSS web default of `row`)
 - `flex: 1` = grow to fill remaining space
 
-**StyleSheet vs styled-components**
-- `StyleSheet.create()`: plain objects, `style={[a, b]}` array syntax for conditionals
-- `styled-components`: template literals, props drive dynamic values directly: `${props => ...}`
+**StyleSheet.create()**
+- Plain JS objects, referenced with `style={[styles.a, styles.b]}` array syntax
+- Conditional styles: `style={[styles.base, condition && styles.extra]}`
+- Truly dynamic values (from state/props) go in an inline object appended to the array:
+  `style={[styles.box, { backgroundColor: dynamicColor }]}`
 
 **Navigation nesting order**
 ```

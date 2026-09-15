@@ -65,12 +65,12 @@ export default function App() {
 }
 */
 
-// ---------- Variant 5: Just the Styles comparison (no navigation) ----------
+// ---------- Variant 5: Just the Styles demo (no navigation) ----------
 /*
 import React from 'react';
-import StylesComparison from './screens/StylesComparison';
+import StylesDemo from './screens/StylesDemo';
 
 export default function App() {
-  return <StylesComparison />;
+  return <StylesDemo />;
 }
 */
